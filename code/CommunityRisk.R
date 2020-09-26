@@ -97,21 +97,23 @@ Org.MAcovid<- left_join(Org.MAcovid, ZipWeights, by="zipcode")
   
 #calculate town-specific weights and rates
 Org<-Org.MAcovid %>%
-  arrange(Town, date) %>%
+  distinct(Town, date, .keep_all = TRUE) %>% #need to include otherwise towns with multiple zips have multiple rows
+  group_by(Town) %>%
+  dplyr::arrange(date, .by_group = TRUE) %>% #avoids the issue with negative incidence for first date for each town due to substracting prior town cases
   mutate(Count.wt=(Count*weight),
          population.wt=town_population*weight,
          Rate=(Count/town_population)*100000,
          Tests.wt=(Tests*weight),
-         incidence7day=Rate-(lag(Rate,1)), #creates issues with negative incidence for first date for each town, as substracts prior zipcode
+         incidence7day=Rate-(lag(Rate,1)),
          incidence1day=(Rate-lag(Rate,1))/7,
-         incidence14day=Rate-lag(Rate,2), #creates issues with negative incidence for first date for each town, as substracts prior zipcode
+         incidence14day=Rate-lag(Rate,2), 
          incidence1day2wk=(Rate-lag(Rate,2))/14,
          Tests2wk=Tests-(lag(Tests,2)),
          Count2wk=Count-(lag(Count,2)),
          positivity2wk=Count2wk/Tests2wk, 
          town_population=(Count/Rate)*100000,
          testingrate=100000*Tests2wk/ town_population
-         )
+  )
 
 Org.community<- Org %>%
   arrange(Town,date)   %>% 
