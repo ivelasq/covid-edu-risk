@@ -1,7 +1,5 @@
 # Data --------------------------------------------------------------------
 
-# setwd(here::here("shiny"))
-
 source("packages.R")
 
 MAcovid <- # processed MA data
@@ -22,7 +20,7 @@ ui <-
                    
                    # Header
                    h2("COVID Community Risk Explorer"),
-                   br("The purpose of this explorer is to showcase the COVID risk in communities around Boston based on ZIP codes."),
+                   br("The purpose of this explorer is to showcase the COVID risk in communities around Massachusetts based on ZIP codes."),
                    br(),
                    sidebarMenu(
 
@@ -186,7 +184,7 @@ server <- function(input, output, session) {
                 labs(x="Date", y="Average Daily Cases, per 100,000",
                      title=paste0("Covid-19 Cases in Communities of ", input$org,", 2020"),
                      subtitle = "Green, Yellow, Red risk categorization as per Commonwealth Guidelines",
-                     caption=paste0("Two-week average incidence in towns/neighborhoods of ", input$org," members weighted by number of households\nData Source: MA Dept of Public Health and Boston Public Health Commission")
+                     caption=paste0("Two-week average incidence in towns/neighborhoods of\n", input$org, " members weighted by number of households\nData Source: MA Dept of Public Health and Boston Public Health Commission")
                 )
         })
         
@@ -214,7 +212,7 @@ server <- function(input, output, session) {
                 labs(x="Date", y="Positivity\n(% of molecular tests positive)",
                      title=paste0("Positivity in Communities of ", input$org,", 2020"),
                      subtitle = "Green and Red risk categorization as per Commonwealth Guidelines",
-                     caption=paste0("Molecular test positivity in towns/neighborhoods of ", input$org," members weighted by number of households\nData Source: MA Dept of Public Health and Boston Public Health Commission")
+                     caption=paste0("Molecular test positivity in towns/neighborhoods of\n", input$org," members weighted by number of households\nData Source: MA Dept of Public Health and Boston Public Health Commission")
                 )
         })
         
