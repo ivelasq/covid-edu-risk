@@ -89,6 +89,9 @@ MAcovid<-left_join(MAcovid, MAtownpoptable, by="Town")
 #add all zipcodes to MAcovid, multiple zipcode per Town (eg Back Bay as 7)
 MAcovid<- left_join(MAtowns, MAcovid, by="Town")
 
+# write the data to use in the app
+write_csv(MAcovid, here::here("shiny", "data", "MAcovid.csv"))
+
 ##Create school/organization specific dataset and calculate rates
 
 #limit list to organization's zipcodes by adding zips and joining

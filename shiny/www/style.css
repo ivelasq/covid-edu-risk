@@ -1,0 +1,51 @@
+.main-header .logo {
+  background-color: #001a3c ;
+    font-family: "Open Sans";
+  font-weight: bold;
+  font-size: 24px;
+}
+/* logo */
+  .skin-blue .main-header .logo {
+    background-color: #001a3c ;
+  }
+
+/* logo when hovered */
+  .skin-blue .main-header .logo:hover {
+    background-color: #001a3c ;
+  }
+
+/* navbar (rest of the header) */
+  .skin-blue .main-header .navbar {
+    background-color: #001a3c ;
+  }     
+
+/* main sidebar */
+  .skin-blue .main-sidebar {
+    font-family: "Open-Sans";
+  }
+
+h1 { font-family: "Open Sans", Open-Sans, sans-serif; font-size: 24px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px; text-transform: uppercase; } 
+h2 { font-family: "Open Sans", Open-Sans, sans-serif; font-size: 20px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px; } 
+h3 { font-family: "Open Sans", Open-Sans, sans-serif; font-size: 18px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px; } 
+h4 { font-family: "Open Sans", Open-Sans, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px; } 
+p { font-family: Open-Sans, sans-serif; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 20px; } 
+blockquote {font-family: "Open-Sans", sans-serif; font-size: 21px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 30px; } 
+pre { font-family: "Open-Sans", sans-serif; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 18.5714px; }
+body {
+  font-family: Open-Sans;
+}
+section.content { 
+  overflow-y: hidden; 
+}
+
+.box.box-solid.box-primary>.box-header {
+  color:#fff;
+    background:#666666
+}
+
+.box.box-solid.box-primary{
+  border-bottom-color:#001a3c;
+    border-left-color:#001a3c;
+    border-right-color:#001a3c;
+    border-top-color:#001a3c;
+}

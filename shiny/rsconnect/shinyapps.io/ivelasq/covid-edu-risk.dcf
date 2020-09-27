@@ -1,0 +1,12 @@
+name: covid-edu-risk
+title: covid-edu-risk
+username:
+account: ivelasq
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2894115
+bundleId: 3675820
+url: https://ivelasq.shinyapps.io/covid-edu-risk/
+when: 1601211220.56571
+asMultiple: FALSE
+asStatic: FALSE
