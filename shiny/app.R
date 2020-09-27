@@ -141,8 +141,9 @@ server <- function(input, output, session) {
             Org %>%
                 mutate(incidence1day=replace(incidence1day,incidence1day > 22, 22)) %>% #overwrite peak to fit in plot
                 ggplot( aes(x=date, group=Town, color=Town)) +
-                theme_classic() + theme(aspect.ratio=1, plot.title = element_text(size = rel(1.5)),
-                                        axis.title = element_text(size = rel(1.5)), axis.text = element_text(size = rel(1.5)))+
+                theme_classic() + 
+                theme(plot.title = element_text(size = rel(1.5)),
+                      axis.title = element_text(size = rel(1.5)), axis.text = element_text(size = rel(1.5)))+
                 geom_line(aes(y=incidence1day2wk), alpha=.7, size=1) +
                 scale_color_viridis(discrete = TRUE, end=0.8, option = "D")+
                 geom_label_repel(data=Org %>%
@@ -169,7 +170,7 @@ server <- function(input, output, session) {
                 geom_ribbon(aes(ymin=0, ymax=4), fill="#20854E99")+
                 geom_ribbon(aes(ymin=4, ymax=8), fill="#FFDC9199")+
                 geom_ribbon(aes(ymin=8, ymax=22), fill="#BC3C2999")+
-                theme_classic() + theme(aspect.ratio=1, plot.title = element_text(size = rel(1.5)),
+                theme_classic() + theme(plot.title = element_text(size = rel(1.5)),
                                         axis.title = element_text(size = rel(1.5)), axis.text = element_text(size = rel(1.5)))+
                 geom_line(aes(y=incidence1day), alpha=1, size=2, color="#6F99ADFF") +
                 geom_label_repel(data=Org.community %>%
@@ -197,7 +198,7 @@ server <- function(input, output, session) {
                 ggplot( aes(x=date)) +
                 geom_ribbon(aes(ymin=0, ymax=2), fill="#20854E99")+
                 geom_ribbon(aes(ymin=2, ymax=10), fill="#BC3C2999")+
-                theme_classic() + theme(aspect.ratio=1, plot.title = element_text(size = rel(1.5)),
+                theme_classic() + theme(plot.title = element_text(size = rel(1.5)),
                                         axis.title = element_text(size = rel(1.5)), axis.text = element_text(size = rel(1.5)))+
                 geom_line(aes(y=positivity14day), alpha=1, size=2, color="#6F99ADFF") +
                 geom_label_repel(data=Org.community %>%
