@@ -3,7 +3,7 @@
 source("packages.R")
 
 MAcovid <- # processed MA data
-    read_csv(here::here("data", "MAcovid.csv"))
+    read_csv(here::here("shiny", "data", "MAcovid.csv"))
 
 # UI ----------------------------------------------------------------------
 
@@ -33,8 +33,9 @@ ui <-
                                  accept = c(
                                      "text/csv",
                                      "text/comma-separated-values, text/plain",
-                                     ".csv")
-                                 )
+                                     ".csv")),
+                    
+                        textOutput(outputId = "latest")
                        
                        ) # end sidebarMenu
                    ) # end column
@@ -83,6 +84,11 @@ server <- function(input, output, session) {
                         col_types = cols(.default = "c"))
     })
     
+    output$latest <- renderText({
+        paste0("Date of last available data: ",
+               (max(MAcovid$date, na.rm = TRUE)))
+    })
+    
     observeEvent(input$file1, {
         req(input$file1)
         
@@ -97,7 +103,8 @@ server <- function(input, output, session) {
             filter(zipcode %in% df()$zipcode) %>% 
             left_join(., ZipWeights, by = "zipcode")
         
-        #calculate town-specific weights and rates
+        # calculate town-specific weights and rates
+        
         Org <-
             Org.MAcovid %>%
             distinct(Town, date, .keep_all = TRUE) %>% #need to include otherwise towns with multiple zips have multiple rows
