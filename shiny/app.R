@@ -34,6 +34,8 @@ ui <-
                                      "text/csv",
                                      "text/comma-separated-values, text/plain",
                                      ".csv")),
+                       
+                       tags$hr(),
                     
                         textOutput(outputId = "latest")
                        
@@ -79,6 +81,7 @@ ui <-
 
 server <- function(input, output, session) { 
     df <- reactive({
+        
         inFile <- input$file1
         dat <- read_csv(inFile$datapath,
                         col_types = cols(.default = "c"))
